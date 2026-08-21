@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오디세이</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="game">
+
+    <!-- 메인 메뉴 -->
+    <section id="mainMenu" class="screen active">
+        <div class="title-area">
+            <h1>오디세이</h1>
+            <p>ODYSSEY</p>
+        </div>
+
+        <div class="coin-display">
+            🪙 <span id="menuCoins">0</span>
+        </div>
+
+        <div class="current-class">
+            현재 직업
+            <strong id="currentClassName">기사</strong>
+        </div>
+
+        <div class="menu-buttons">
+            <button id="startButton">게임 시작</button>
+            <button id="classButton">⚔️ 직업 선택</button>
+            <button id="shopButton">🛒 상점</button>
+        </div>
+    </section>
+
+
+    <!-- 직업 선택 -->
+    <section id="classMenu" class="screen">
+        <div class="panel">
+            <h2>직업 선택</h2>
+
+            <div id="classCards" class="class-grid"></div>
+
+            <button class="back-button" id="classBackButton">뒤로</button>
+        </div>
+    </section>
+
+
+    <!-- 상점 -->
+    <section id="shopMenu" class="screen">
+        <div class="panel">
+            <h2>상점</h2>
+
+            <div class="shop-coins">
+                🪙 <span id="shopCoins">0</span>
+            </div>
+
+            <div id="shopContent"></div>
+
+            <button class="back-button" id="shopBackButton">뒤로</button>
+        </div>
+    </section>
+
+
+    <!-- 게임 화면 -->
+    <section id="gameScreen" class="screen">
+
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="gameUI">
+
+            <div class="top-left">
+                <div class="level-text">
+                    LV <span id="levelText">1</span>
+                </div>
+
+                <div class="xp-bar">
+                    <div id="xpFill"></div>
+                </div>
+
+                <div class="hp-bar">
+                    <div id="hpFill"></div>
+                </div>
+
+                <div class="hp-text">
+                    HP <span id="hpText">100 / 100</span>
+                </div>
+            </div>
+
+            <div class="top-right">
+                <div>🪙 <span id="gameCoins">0</span></div>
+                <div>👹 <span id="killCount">0</span></div>
+            </div>
+
+            <div class="class-display" id="gameClassName">
+                기사
+            </div>
+        </div>
+
+        <div id="gameHelp">
+            WASD 이동
+        </div>
+    </section>
+
+
+    <!-- 레벨업 -->
+    <section id="levelUpScreen" class="overlay">
+        <div class="level-up-panel">
+            <h2>LEVEL UP!</h2>
+            <p>원하는 카드를 하나 선택하세요.</p>
+
+            <div id="cardContainer" class="card-container"></div>
+        </div>
+    </section>
+
+
+    <!-- 게임 오버 -->
+    <section id="gameOverScreen" class="overlay">
+        <div class="game-over-panel">
+            <h2>GAME OVER</h2>
+
+            <div class="result">
+                <p>레벨 <strong id="resultLevel">1</strong></p>
+                <p>처치한 적 <strong id="resultKills">0</strong></p>
+                <p>획득 코인 <strong id="resultCoins">0</strong></p>
+            </div>
+
+            <button id="returnMenuButton">메인 화면</button>
+        </div>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
