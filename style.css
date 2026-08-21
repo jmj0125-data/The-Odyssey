@@ -1,0 +1,498 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #101216;
+    color: white;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+#game {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* =========================
+   메인 메뉴
+========================= */
+
+#mainMenu {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at center, #29313c 0%, #111318 55%, #090a0d 100%);
+}
+
+.title-area {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.title-area h1 {
+    font-size: clamp(55px, 9vw, 100px);
+    letter-spacing: 15px;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+.title-area p {
+    margin-top: 5px;
+    letter-spacing: 8px;
+    color: #9ba4b2;
+}
+
+.coin-display {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.current-class {
+    color: #aeb7c4;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.current-class strong {
+    display: block;
+    font-size: 22px;
+    color: white;
+    margin-top: 5px;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: min(320px, 80vw);
+}
+
+.menu-buttons button,
+.back-button,
+#returnMenuButton {
+    padding: 16px;
+    border-radius: 8px;
+    background: #252b34;
+    color: white;
+    font-size: 17px;
+    transition: 0.15s;
+}
+
+.menu-buttons button:first-child {
+    background: #4b596b;
+    font-size: 21px;
+}
+
+.menu-buttons button:hover,
+.back-button:hover,
+#returnMenuButton:hover {
+    transform: translateY(-2px);
+    background: #657386;
+}
+
+
+/* =========================
+   공통 패널
+========================= */
+
+.panel {
+    width: min(1100px, 94vw);
+    max-height: 92vh;
+    overflow-y: auto;
+    margin: auto;
+    padding: 35px;
+    background: rgba(17, 20, 26, 0.96);
+    border: 1px solid #3d4652;
+    border-radius: 14px;
+}
+
+.panel h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+.back-button {
+    display: block;
+    width: 200px;
+    margin: 30px auto 0;
+}
+
+
+/* =========================
+   직업 선택
+========================= */
+
+#classMenu {
+    background: #0d0f13;
+}
+
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.class-card {
+    padding: 25px 20px;
+    background: #1b2028;
+    border: 2px solid #303844;
+    border-radius: 12px;
+    text-align: center;
+    transition: 0.15s;
+}
+
+.class-card:hover {
+    transform: translateY(-4px);
+    border-color: #77869a;
+}
+
+.class-card.selected {
+    border-color: #e1e7ee;
+    box-shadow: 0 0 18px rgba(255,255,255,0.12);
+}
+
+.class-icon {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.class-card h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.class-card p {
+    color: #aeb6c2;
+    min-height: 70px;
+    line-height: 1.5;
+}
+
+.stat-list {
+    margin: 18px 0;
+    text-align: left;
+    line-height: 1.8;
+    color: #d8dee6;
+}
+
+.class-card button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    background: #394453;
+    color: white;
+}
+
+.class-card button:hover {
+    background: #59687a;
+}
+
+
+/* =========================
+   상점
+========================= */
+
+#shopMenu {
+    background: #0d0f13;
+}
+
+.shop-coins {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.shop-item {
+    background: #1b2028;
+    border: 1px solid #343d49;
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 15px;
+}
+
+.shop-item h3 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.shop-item p {
+    color: #adb6c3;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.shop-item button {
+    padding: 12px 25px;
+    background: #3d4a5b;
+    color: white;
+    border-radius: 6px;
+}
+
+.shop-item button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.coming-soon {
+    text-align: center;
+    padding: 35px 15px;
+    margin-top: 20px;
+    border: 1px dashed #505b69;
+    border-radius: 10px;
+    color: #929dab;
+}
+
+.coming-soon strong {
+    display: block;
+    font-size: 25px;
+    color: #d4d9df;
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   게임
+========================= */
+
+#gameScreen {
+    position: relative;
+    background: #161a20;
+}
+
+#gameCanvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#gameUI {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.top-left {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 260px;
+}
+
+.level-text {
+    font-size: 22px;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px black;
+}
+
+.xp-bar,
+.hp-bar {
+    width: 100%;
+    height: 14px;
+    background: #222730;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #4b5563;
+}
+
+.xp-bar {
+    margin-bottom: 7px;
+}
+
+#xpFill {
+    width: 0%;
+    height: 100%;
+    background: #5fa8ff;
+    transition: width 0.15s;
+}
+
+#hpFill {
+    width: 100%;
+    height: 100%;
+    background: #d95353;
+    transition: width 0.15s;
+}
+
+.hp-text {
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.top-right {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    text-align: right;
+    font-size: 18px;
+    line-height: 1.8;
+    text-shadow: 0 2px 4px black;
+}
+
+.class-display {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    text-shadow: 0 2px 4px black;
+}
+
+#gameHelp {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #9da7b5;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+
+/* =========================
+   오버레이
+========================= */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.72);
+}
+
+.overlay.active {
+    display: flex;
+}
+
+.level-up-panel,
+.game-over-panel {
+    width: min(900px, 94vw);
+    padding: 35px;
+    background: #161a20;
+    border: 1px solid #46505e;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.level-up-panel h2,
+.game-over-panel h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+.level-up-panel > p {
+    text-align: center;
+    color: #9da7b5;
+    margin-bottom: 25px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.level-card {
+    min-height: 250px;
+    padding: 22px;
+    border: 2px solid #3c4653;
+    border-radius: 12px;
+    background: #202630;
+    color: white;
+    transition: 0.15s;
+    text-align: left;
+}
+
+.level-card:hover {
+    transform: translateY(-5px);
+    border-color: #dbe2eb;
+    background: #29313d;
+}
+
+.card-rarity {
+    font-size: 13px;
+    color: #9ea9b7;
+    margin-bottom: 15px;
+}
+
+.level-card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.level-card p {
+    color: #b5beca;
+    line-height: 1.55;
+}
+
+.card-type {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 5px 9px;
+    background: #303947;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.result {
+    text-align: center;
+    margin: 25px 0;
+    line-height: 2;
+    font-size: 18px;
+}
+
+.game-over-panel {
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .class-grid,
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .class-card {
+        padding: 18px;
+    }
+
+    .level-card {
+        min-height: 160px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    .top-left {
+        width: 200px;
+    }
+}
