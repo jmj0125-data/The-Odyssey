@@ -1,4 +1,4 @@
-```javascript
+
 /* =========================================================
    ODYSSEY 1.1
    Combat / Skill / Camera / Pause / Audio Update
